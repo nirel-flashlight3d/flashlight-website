@@ -72,16 +72,16 @@
 
   /* ---------- header ---------- */
   .site-header{position:sticky;top:0;z-index:100;background:rgba(238,240,230,.86);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid var(--line);}
-  .site-header .wrap{display:flex;align-items:center;justify-content:space-between;height:70px;}
-  .brand{display:flex;align-items:center;gap:12px;}
+  .site-header .wrap{display:flex;align-items:center;justify-content:space-between;height:70px;gap:20px;}
+  .brand{display:flex;align-items:center;gap:12px;flex-shrink:0;}
   .brand svg{height:30px;width:auto;flex:none;}
   .brand .mark-text{display:flex;flex-direction:column;line-height:1;}
   .brand .wm{font-family:var(--serif);font-weight:600;font-size:19px;color:var(--forest);letter-spacing:-0.01em;}
   .brand .wm sup{font-size:10px;color:var(--sage);font-weight:600;margin-left:2px;top:-0.55em;}
   .brand .tg{font-family:var(--mono);font-size:9.5px;letter-spacing:0.26em;color:var(--sage-deep);margin-top:4px;}
 
-  .nav{display:flex;align-items:center;gap:4px;}
-  .nav a{font-size:14px;color:var(--moss);padding:8px 13px;border-radius:6px;font-weight:500;transition:background .15s,color .15s;}
+  .nav{display:flex;align-items:center;gap:0;}
+  .nav a{font-size:13.5px;color:var(--moss);padding:8px 8px;border-radius:6px;font-weight:500;transition:background .15s,color .15s;white-space:nowrap;}
   .nav a:hover{background:var(--sage-tint);color:var(--forest);}
   .nav a.active{color:var(--forest);}
   .nav a.active::after{content:"";display:block;height:2px;background:var(--sage);border-radius:2px;margin-top:5px;}
@@ -93,7 +93,7 @@
   .btn-primary:hover{background:var(--forest-2);}
   .btn-outline{background:transparent;color:var(--forest);border-color:var(--line-2);}
   .btn-outline:hover{border-color:var(--forest);background:rgba(23,40,26,.04);}
-  .btn-sm{padding:9px 16px;font-size:13px;}
+  .btn-sm{padding:9px 13px;font-size:13px;}
   .btn .arw{transition:transform .18s;}
   .btn:hover .arw{transform:translateX(3px);}
 
@@ -306,6 +306,11 @@
     .contact-card{grid-template-columns:1fr;}
     .footer-top{grid-template-columns:1fr 1fr;gap:32px;}
     .band{padding:40px 32px;}
+  }
+  /* nav collapses to the hamburger menu earlier than other layout breakpoints:
+     with 7 nav items + CTA, the full row needs ~1150px+ of content width to
+     avoid crowding the wordmark, so this threshold is intentionally wider. */
+  @media (max-width:1200px){
     .nav{display:none;position:absolute;top:70px;left:0;right:0;flex-direction:column;background:var(--canvas);border-bottom:1px solid var(--line);padding:14px 22px 20px;gap:2px;align-items:stretch;}
     .nav.open{display:flex;}
     .nav a{padding:12px 10px;}
@@ -315,12 +320,6 @@
   }
   @media (max-width:720px){
     .wrap{padding:0 22px;}
-    .nav{display:none;position:absolute;top:70px;left:0;right:0;flex-direction:column;background:var(--canvas);border-bottom:1px solid var(--line);padding:14px 22px 20px;gap:2px;align-items:stretch;}
-    .nav.open{display:flex;}
-    .nav a{padding:12px 10px;}
-    .nav a.active::after{display:none;}
-    .nav-cta{margin:10px 0 0;}
-    .hamburger{display:flex;}
     .hero{padding:48px 0 20px;}
     .hero h1{font-size:34px;}
     .section{padding:60px 0;}
@@ -438,7 +437,6 @@ body{font-size:17px;}
 .feat h4{font-size:15.5px;}
 .feat p{font-size:14px;}
 .mv p,.role p,.founder p{font-size:16px;}
-.nav a{font-size:15px;}
 .band h2{font-size:27px;}
 .band p{font-size:16px;}
 .fc-panel-desc{font-size:15.5px;}
