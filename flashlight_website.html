@@ -253,13 +253,15 @@
   .role p{font-size:14.5px;color:var(--text);}
 
   /* news */
-  .news-item{display:grid;grid-template-columns:190px 1fr;gap:32px;padding:32px 0;border-top:1px solid var(--line);}
-  .news-item:first-of-type{border-top:none;}
-  .news-meta{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.03em;}
-  .news-meta .tag{display:inline-block;margin-top:8px;color:var(--sage-deep);border:1px solid var(--line-2);border-radius:5px;padding:2px 8px;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;}
-  .news-body h3{font-size:22px;margin-bottom:12px;line-height:1.2;}
+  .news-item{display:grid;grid-template-columns:190px 1fr;gap:32px;padding:40px 0;border-top:1px solid var(--line);}
+  .news-item:first-of-type{border-top:none;padding-top:8px;}
+  .news-meta{display:flex;flex-direction:column;align-items:flex-start;gap:14px;font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.03em;}
+  .news-meta .tag{display:inline-block;color:var(--sage-deep);border:1px solid var(--line-2);border-radius:5px;padding:2px 8px;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;}
+  .news-body h3{font-size:22px;margin-bottom:12px;line-height:1.25;}
   .news-body p{font-size:15px;color:var(--text);}
   .news-body p + p{margin-top:12px;}
+  .news-photo{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:var(--radius);border:1px solid var(--line);display:block;margin-top:22px;}
+  .news-caption{font-size:12.5px;color:var(--muted);margin-top:10px;line-height:1.5;}
 
   /* legal */
   .legal-index{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:40px;}
@@ -1498,6 +1500,11 @@ body{font-size:17px;}
           <h3>Flashlight 3D develops unified personal health-information platform</h3>
           <p>Flashlight 3D is developing an AI-assisted system intended to consolidate medical records, wearable signals, laboratory reports, and genomic information into a user-controlled longitudinal record.</p>
           <p>The platform is currently in development. Planned capabilities remain subject to research, testing, privacy review, and validation.</p>
+          <picture>
+            <source srcset="flashlight-assets/genome-pipeline-whiteboard.webp" type="image/webp">
+            <img class="news-photo" src="flashlight-assets/genome-pipeline-whiteboard.jpg" alt="A whiteboard sketch of the genomic variant-annotation pipeline, from VCF and SNP files through ClinGen, ClinVar, and Orphanet, drawn during a team working session." width="1600" height="900" loading="lazy" decoding="async">
+          </picture>
+          <p class="news-caption">Working through the variant-annotation pipeline on the whiteboard, San Diego.</p>
         </div>
       </div>
       <div class="news-item">
@@ -1507,6 +1514,11 @@ body{font-size:17px;}
           <p>Flashlight 3D has launched its Summer 2026 internship cohort with six interns working alongside the company to prototype Seq. Analysis Report, an AI-assisted genomic information tool currently in development.</p>
           <p>Beginning July 20, the cohort will contribute across genomic data processing, sequence annotation, artificial intelligence, application development, user experience, and responsible product design.</p>
           <p>The internship program gives participants hands-on experience developing early-stage medical-informatics technology while contributing to product evaluation, documentation, privacy, safety, and communication.</p>
+          <picture>
+            <source srcset="flashlight-assets/flashlight-team-cohort-alt.webp" type="image/webp">
+            <img class="news-photo" src="flashlight-assets/flashlight-team-cohort-alt.jpg" alt="The Flashlight 3D founder and the Summer 2026 intern cohort gathered together in San Diego." width="1600" height="900" loading="lazy" decoding="async">
+          </picture>
+          <p class="news-caption">The Summer 2026 cohort, on site in San Diego.</p>
         </div>
       </div>
     </div>
