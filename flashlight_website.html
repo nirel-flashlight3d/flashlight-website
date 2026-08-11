@@ -278,6 +278,14 @@
   .news-photo{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:var(--radius);border:1px solid var(--line);display:block;margin-top:22px;}
   .news-caption{font-size:12.5px;color:var(--muted);margin-top:10px;line-height:1.5;}
 
+  /* ---------- blog: category filter ---------- */
+  .blog-filter{display:flex;gap:2px;flex-wrap:wrap;margin-bottom:8px;}
+  .blog-filter-item{font-family:var(--mono);font-size:12.5px;color:var(--muted);padding:9px 13px;border-radius:6px;letter-spacing:.02em;transition:background .15s,color .15s;}
+  .blog-filter-item:hover{color:var(--forest);}
+  .blog-filter-item.active{color:var(--forest);background:var(--sage-tint);font-weight:600;}
+  #blog-featured{margin-bottom:8px;}
+  #blog-featured .news-photo{margin-top:0;}
+
   /* legal */
   .legal-index{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:40px;}
   .legal-index a{font-family:var(--mono);font-size:12px;color:var(--moss);background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:8px 15px;transition:border-color .15s,color .15s;}
@@ -695,11 +703,11 @@ body{font-size:17px;}
     </button>
 
     <nav class="nav" id="nav">
-      <a href="#home" data-nav="home">Home</a>
       <a href="#records" data-nav="records">Medical Records</a>
       <a href="#seq" data-nav="seq">Genomic Sequencing</a>
       <a href="#chippy" data-nav="chippy">Chippy</a>
       <a href="#trust" data-nav="trust">Trust &amp; Privacy</a>
+      <a href="#blog" data-nav="blog">Blog</a>
       <a href="#company" data-nav="company">Company</a>
       <a href="#careers" data-nav="careers">Careers</a>
       <a class="btn btn-primary btn-sm nav-cta" href="#seq" data-nav="seq">See the flagship report</a>
@@ -1008,6 +1016,19 @@ body{font-size:17px;}
         <span class="chip">1 shared architecture</span>
       </div>
       <p class="muted small" style="margin-top:18px;max-width:640px;">Photographed during real working sessions; the whiteboard shows the actual medical-records pipeline being designed. <a class="link-arrow" href="#company" data-nav="company">Meet the team <span class="arw" aria-hidden="true">→</span></a></p>
+    </div>
+  </div>
+
+  <!-- Latest from the Blog -->
+  <div class="section" id="blog-teaser">
+    <div class="wrap" style="max-width:900px;">
+      <div class="section-head" style="margin-bottom:8px;">
+        <p class="eyebrow">From the Blog</p>
+        <h2>What we're learning as we build</h2>
+        <p>Notes on the technical and product problems we're working through, who's working on them, and where things stand.</p>
+      </div>
+      <div id="blog-teaser-list"></div>
+      <p style="margin-top:8px;"><a class="link-arrow" href="#blog" data-nav="blog">View all posts <span class="arw" aria-hidden="true">→</span></a></p>
     </div>
   </div>
 
@@ -1508,49 +1529,29 @@ body{font-size:17px;}
   </div>
 </section>
 
-<!-- ============ NEWS ============ -->
-<section class="page" id="page-news" data-page="news">
+<!-- ============ BLOG ============ -->
+<section class="page" id="page-blog" data-page="blog">
   <div class="hero">
     <div class="wrap">
-      <p class="eyebrow">News</p>
-      <h1 style="font-size:44px;max-width:760px;">News and company developments.</h1>
-      <p class="sub" style="max-width:640px;margin-top:20px;">Follow Flashlight 3D's progress across product development, research, partnerships, funding, and people.</p>
-      <div class="hero-actions" style="margin-top:6px;">
-        <a class="btn btn-outline" href="https://www.linkedin.com/company/flashlight3d/" target="_blank" rel="noopener">Follow on LinkedIn <span class="arw" aria-hidden="true">→</span></a>
-      </div>
+      <p class="eyebrow">Blog</p>
+      <h1 style="font-size:44px;max-width:760px;">How we think about what we're building.</h1>
+      <p class="sub" style="max-width:640px;margin-top:20px;">Notes on the technical and product problems we're working through, who's working on them, and what we're learning as we build Medical Records, the Genomic Sequencing Pipeline, and Chippy.</p>
     </div>
   </div>
 
   <div class="section first" style="border-top:none;padding-top:10px;">
     <div class="wrap" style="max-width:900px;">
-      <div class="news-item">
-        <div class="news-meta">July 2026<span class="tag">Company</span></div>
-        <div class="news-body">
-          <h3>Flashlight 3D develops unified personal health-information platform</h3>
-          <p>Flashlight 3D is developing an AI-assisted system intended to consolidate medical records, wearable signals, laboratory reports, and genomic information into a user-controlled longitudinal record.</p>
-          <p>The platform is currently in development. Planned capabilities remain subject to research, testing, privacy review, and validation.</p>
-          <picture>
-            <source srcset="flashlight-assets/genome-pipeline-whiteboard.webp" type="image/webp">
-            <img class="news-photo" src="flashlight-assets/genome-pipeline-whiteboard.jpg" alt="A whiteboard sketch of the genomic variant-annotation pipeline, from VCF and SNP files through ClinGen, ClinVar, and Orphanet, drawn during a team working session." width="1600" height="900" loading="lazy" decoding="async">
-          </picture>
-          <p class="news-caption">Working through the variant-annotation pipeline on the whiteboard, San Diego.</p>
-        </div>
-      </div>
-      <div class="news-item">
-        <div class="news-meta">July 20, 2026<span class="tag">People</span></div>
-        <div class="news-body">
-          <h3>Flashlight 3D welcomes six interns for Summer 2026 development cohort</h3>
-          <p>Flashlight 3D has launched its Summer 2026 internship cohort with six interns working alongside the company to prototype Seq. Analysis Report, an AI-assisted genomic information tool currently in development.</p>
-          <p>Beginning July 20, the cohort will contribute across genomic data processing, sequence annotation, artificial intelligence, application development, user experience, and responsible product design.</p>
-          <p>The internship program gives participants hands-on experience developing early-stage medical-informatics technology while contributing to product evaluation, documentation, privacy, safety, and communication.</p>
-          <picture>
-            <source srcset="flashlight-assets/flashlight-team-cohort-alt.webp" type="image/webp">
-            <img class="news-photo" src="flashlight-assets/flashlight-team-cohort-alt.jpg" alt="The Flashlight 3D founder and the Summer 2026 intern cohort gathered together in San Diego." width="1600" height="900" loading="lazy" decoding="async">
-          </picture>
-          <p class="news-caption">The Summer 2026 cohort, on site in San Diego.</p>
-        </div>
-      </div>
+      <div class="blog-filter" id="blog-filter" role="tablist" aria-label="Filter posts by category"></div>
+      <div class="win" id="blog-featured" style="margin-top:22px;"></div>
+      <div id="blog-list"></div>
     </div>
+  </div>
+</section>
+
+<!-- ============ BLOG POST ============ -->
+<section class="page" id="page-blog-post" data-page="blog-post">
+  <div class="section first" style="border-top:none;padding-top:48px;">
+    <div id="blog-post-root"></div>
   </div>
 </section>
 
@@ -1627,7 +1628,7 @@ body{font-size:17px;}
         <a href="#seq" data-nav="seq">Genomic Sequencing Pipeline</a>
         <a href="#chippy" data-nav="chippy">Chippy</a>
         <a href="#trust" data-nav="trust">Trust &amp; Privacy</a>
-        <a href="#news" data-nav="news">News</a>
+        <a href="#blog" data-nav="blog">Blog</a>
       </div>
       <div class="f-col">
         <h4>Company</h4>
@@ -1655,6 +1656,294 @@ body{font-size:17px;}
 </footer>
 
 <script>
+/* ============ BLOG: centralized data model ============
+   Single source of truth for the homepage teaser, the Blog landing
+   page, and individual Blog post pages, so post copy never has to
+   be duplicated across the file. To add a post, add an entry here. */
+var BLOG_CATEGORIES = ['Research & Data', 'Building Flashlight', 'Health Infrastructure', 'Company News'];
+
+var blogPosts = [
+  {
+    slug: 'chippy-remembers-everything',
+    title: "We built an AI that remembers everything. Now we're deciding what to ask it.",
+    category: 'Building Flashlight',
+    dateDisplay: 'August 1, 2026',
+    dateISO: '2026-08-01',
+    sortOrder: 1,
+    author: 'Flashlight 3D',
+    readingTime: '2 min read',
+    deck: 'Development update — Chippy',
+    excerpt: "Chippy has been running our company for weeks. The interesting problem turned out to be deciding what it should actually be.",
+    image: 'flashlight-assets/medical-records-working-session-candid',
+    imageAlt: 'A teammate works at a laptop while the founder sketches a workflow on the whiteboard during a team working session in San Diego.',
+    imageCaption: 'A working session in San Diego.',
+    featured: true,
+    sections: [
+      { heading: '', paragraphs: [
+        "Chippy is live, and it has been running our company for weeks.",
+        "It sits on our meeting transcripts, our documents, and our decisions. It tracks what we're working on, what we've already figured out, and what's supposed to happen next. When someone needs to know why we filtered a variant class the way we did in July, or what we decided about a data-handling question three meetings ago, they ask Chippy instead of asking a person or scrolling through notes.",
+        "For a company this size, that's already worth it. Institutional memory doesn't usually survive a startup's first year: decisions get made, contexts get lost, and six months later nobody can reconstruct the reasoning behind something everyone is now building on.",
+        "The interesting problem right now isn't technical. It's that we're still working out what Chippy should be.",
+        "Right now it's a company brain. It could be a research assistant, an onboarding system, a project manager that actually knows the project. Each of those is a different product, and we'd rather find out which one is genuinely useful by living with it than by guessing on a whiteboard. Intern Angel Mencia has been working diligently to develop the AI agent at a technical level. He is joined by intern Nirel Indurkar, leading the AI Alignment process to ensure that all of Chippy's policies and instructions are valid and data is protected.",
+        "There's also a longer thread here. Chippy is a system that takes a large pile of unstructured information about an entity and makes it answerable, with sources attached. That's the same problem as a person's medical records. It's the same problem as a genome.",
+        "We're practicing on ourselves first."
+      ]}
+    ]
+  },
+  {
+    slug: 'what-breaks-reading-a-medical-record',
+    title: 'What breaks when you try to read a medical record',
+    category: 'Building Flashlight',
+    dateDisplay: 'August 7, 2026',
+    dateISO: '2026-08-07',
+    sortOrder: 2,
+    author: 'Flashlight 3D',
+    readingTime: '1 min read',
+    deck: 'Development update — Medical Records Pipeline',
+    excerpt: "The medical records pipeline is close to prototype. The hard part isn't any single format — it's all of them at once, reliably.",
+    image: 'flashlight-assets/medical-records-working-session-wide',
+    imageAlt: 'The founder sketching the medical-records extraction pipeline on a whiteboard during a hybrid working session, with laptops and remote teammates visible on a meeting-room screen.',
+    imageCaption: 'Sketching the medical-records extraction pipeline, San Diego.',
+    featured: false,
+    sections: [
+      { heading: '', paragraphs: [
+        "The medical records pipeline is close to prototype.",
+        "Medical records were never designed to be read by anything other than a human being with the time to read them. A single person's history might live across four institutions in four formats: scanned PDFs where the text is really an image, faxes of faxes, portal exports with column headers that mean one thing at one hospital and something else at another. Dates in three formats. Units that shift between systems. The same medication under a brand name in one document and a generic in the next.",
+        "Any one of those is solvable. All of them at once, reliably, without quietly dropping something that mattered, is the actual engineering problem.",
+        "Andrew Pham and Sathvik Guntha have been working through it by patching parsing errors, tracking down where data gets mangled in the handoff between stages, and testing against the messiest inputs we can find rather than the cleanest."
+      ]}
+    ]
+  },
+  {
+    slug: 'building-the-pipeline-was-the-easy-part',
+    title: 'Building the pipeline was the easy part',
+    category: 'Building Flashlight',
+    dateDisplay: 'August 2026',
+    dateISO: '2026-08',
+    sortOrder: 3,
+    author: 'Flashlight 3D',
+    readingTime: '2 min read',
+    deck: 'Development update — Whole Genome Sequence Report',
+    excerpt: "The genomic variant pipeline is built and producing reports. Proving it's right is the part that takes longer — and should.",
+    image: 'flashlight-assets/flashlight-team-cohort',
+    imageAlt: 'The Flashlight 3D founder and six-person summer intern cohort seated together around a conference table in San Diego.',
+    imageCaption: 'Peter Wang, Max Arola, and Dru Johnson are leading validation this month.',
+    featured: false,
+    sections: [
+      { heading: '', paragraphs: [
+        "The pipeline is built. A whole genome sequence goes in, and a variant report comes out the other side — filtered, annotated, cross-referenced against ClinVar, ClinGen, OMIM, Orphanet, and the ACMG actionable gene list.",
+        "That took a few weeks. Proving it's right will take longer, and it should.",
+        "A whole genome carries millions of variants. Almost all of them are noise, and the entire value of a report like this is the small number that aren't. Which means the failure mode isn't a report that doesn't generate — it's a report that generates smoothly and confidently tells someone the wrong thing. A tool nobody trusts is useless. A tool people trust that shouldn't be trusted is worse.",
+        "So this month, Peter Wang, Max Arola, and Dru Johnson are in validation. They're running known samples through the pipeline and checking the output against expected results, variant by variant. Where a classification is uncertain, they trace it back to the source. Where the filtering logic drops something it shouldn't, they find out why.",
+        "It's slow, unglamorous work, and it's the difference between a demo and a product.",
+        "We'll release it when we believe it, not before."
+      ]}
+    ]
+  },
+  {
+    slug: 'unified-personal-health-information-platform',
+    title: 'Flashlight 3D develops unified personal health-information platform',
+    category: 'Company News',
+    dateDisplay: 'July 2026',
+    dateISO: '2026-07',
+    sortOrder: 4,
+    author: 'Flashlight 3D',
+    readingTime: '1 min read',
+    deck: '',
+    excerpt: 'Flashlight 3D is developing an AI-assisted system intended to consolidate medical records, wearable signals, laboratory reports, and genomic information into a user-controlled longitudinal record.',
+    image: 'flashlight-assets/genome-pipeline-whiteboard',
+    imageAlt: 'A whiteboard sketch of the genomic variant-annotation pipeline, from VCF and SNP files through ClinGen, ClinVar, and Orphanet, drawn during a team working session.',
+    imageCaption: 'Working through the variant-annotation pipeline on the whiteboard, San Diego.',
+    featured: false,
+    sections: [
+      { heading: '', paragraphs: [
+        "Flashlight 3D is developing an AI-assisted system intended to consolidate medical records, wearable signals, laboratory reports, and genomic information into a user-controlled longitudinal record.",
+        "The platform is currently in development. Planned capabilities remain subject to research, testing, privacy review, and validation."
+      ]}
+    ]
+  },
+  {
+    slug: 'welcomes-six-interns-for-summer-2026-cohort',
+    title: 'Flashlight 3D welcomes six interns for Summer 2026 development cohort',
+    category: 'Company News',
+    dateDisplay: 'July 20, 2026',
+    dateISO: '2026-07-20',
+    sortOrder: 5,
+    author: 'Flashlight 3D',
+    readingTime: '1 min read',
+    deck: '',
+    excerpt: 'Flashlight 3D has launched its Summer 2026 internship cohort with six interns working alongside the company to prototype the Genomic Sequencing Pipeline, currently in development.',
+    image: 'flashlight-assets/flashlight-team-cohort-alt',
+    imageAlt: 'The Flashlight 3D founder and the Summer 2026 intern cohort gathered together in San Diego.',
+    imageCaption: 'The Summer 2026 cohort, on site in San Diego.',
+    featured: false,
+    sections: [
+      { heading: '', paragraphs: [
+        "Flashlight 3D has launched its Summer 2026 internship cohort with six interns working alongside the company to prototype the Genomic Sequencing Pipeline, an AI-assisted genomic information tool currently in development.",
+        "Beginning July 20, the cohort will contribute across genomic data processing, sequence annotation, artificial intelligence, application development, user experience, and responsible product design.",
+        "The internship program gives participants hands-on experience developing early-stage medical-informatics technology while contributing to product evaluation, documentation, privacy, safety, and communication."
+      ]}
+    ]
+  }
+];
+
+function blogEscapeHtml(str){
+  return String(str).replace(/[&<>"']/g, function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+  });
+}
+function blogSortedPosts(){
+  return blogPosts.slice().sort(function(a,b){ return (a.sortOrder||999) - (b.sortOrder||999); });
+}
+function blogPostBySlug(slug){
+  for(var i=0;i<blogPosts.length;i++){ if(blogPosts[i].slug === slug) return blogPosts[i]; }
+  return null;
+}
+function blogPicture(post, cls, w, h){
+  return '<picture>' +
+    '<source srcset="'+post.image+'.webp" type="image/webp">' +
+    '<img class="'+cls+'" src="'+post.image+'.jpg" alt="'+blogEscapeHtml(post.imageAlt)+'" width="'+w+'" height="'+h+'" loading="lazy" decoding="async">' +
+    '</picture>';
+}
+function blogItemHtml(post){
+  return '' +
+    '<div class="news-item rvl">' +
+      '<div class="news-meta">'+blogEscapeHtml(post.dateDisplay)+'<span class="tag">'+blogEscapeHtml(post.category)+'</span></div>' +
+      '<div class="news-body">' +
+        '<h3><a href="#blog/'+post.slug+'" data-nav="blog-post">'+blogEscapeHtml(post.title)+'</a></h3>' +
+        '<p>'+blogEscapeHtml(post.excerpt)+'</p>' +
+        blogPicture(post, 'news-photo', 1600, 900) +
+        '<p class="news-caption">'+blogEscapeHtml(post.imageCaption)+'</p>' +
+        '<a class="link-arrow" href="#blog/'+post.slug+'" data-nav="blog-post">Read more <span class="arw" aria-hidden="true">&rarr;</span></a>' +
+      '</div>' +
+    '</div>';
+}
+function blogRewireNav(root){
+  root.querySelectorAll('[data-nav]').forEach(function(el){
+    el.addEventListener('click', function(e){
+      e.preventDefault();
+      var hrefHash = (el.getAttribute('href')||'').replace(/^#/, '');
+      var hash = hrefHash || el.getAttribute('data-nav');
+      if(history.pushState){ history.pushState(null,'','#'+hash); }
+      else { location.hash = hash; }
+      if(typeof setActive === 'function'){ setActive(hash); }
+    });
+  });
+}
+function renderBlogHomeTeaser(){
+  var root = document.getElementById('blog-teaser-list');
+  if(!root) return;
+  var top3 = blogSortedPosts().slice(0,3);
+  root.innerHTML = top3.map(function(post){
+    return '' +
+      '<div class="news-item rvl" style="padding:26px 0;">' +
+        '<div class="news-meta">'+blogEscapeHtml(post.dateDisplay)+'<span class="tag">'+blogEscapeHtml(post.category)+'</span></div>' +
+        '<div class="news-body">' +
+          '<h3 style="font-size:19px;"><a href="#blog/'+post.slug+'" data-nav="blog-post">'+blogEscapeHtml(post.title)+'</a></h3>' +
+          '<p>'+blogEscapeHtml(post.excerpt)+'</p>' +
+          '<a class="link-arrow" href="#blog/'+post.slug+'" data-nav="blog-post">Read more <span class="arw" aria-hidden="true">&rarr;</span></a>' +
+        '</div>' +
+      '</div>';
+  }).join('');
+  blogRewireNav(root);
+}
+var blogCurrentCategory = 'All';
+function renderBlogFilter(){
+  var root = document.getElementById('blog-filter');
+  if(!root) return;
+  var cats = ['All'].concat(BLOG_CATEGORIES);
+  root.innerHTML = cats.map(function(cat){
+    var active = cat === blogCurrentCategory;
+    return '<a href="#" class="blog-filter-item'+(active?' active':'')+'" role="tab" aria-selected="'+active+'" data-cat="'+blogEscapeHtml(cat)+'">'+blogEscapeHtml(cat)+'</a>';
+  }).join('');
+  root.querySelectorAll('[data-cat]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      blogCurrentCategory = a.getAttribute('data-cat');
+      renderBlogIndex();
+    });
+  });
+}
+function renderBlogIndex(){
+  var listRoot = document.getElementById('blog-list');
+  var featRoot = document.getElementById('blog-featured');
+  if(!listRoot) return;
+  renderBlogFilter();
+  var all = blogSortedPosts();
+  var filtered = blogCurrentCategory === 'All' ? all : all.filter(function(p){ return p.category === blogCurrentCategory; });
+
+  var featured = null;
+  if(featRoot){
+    featured = filtered.find(function(p){ return p.featured; }) || filtered[0] || null;
+    if(featured){
+      featRoot.style.display = '';
+      featRoot.innerHTML = '' +
+        '<div class="win-bar"><span class="win-dots" aria-hidden="true"><span></span><span></span><span></span></span><span class="win-title">Featured</span></div>' +
+        '<div class="win-body">' +
+          blogPicture(featured, 'news-photo', 1600, 900) +
+          '<div class="news-meta" style="margin-top:18px;">'+blogEscapeHtml(featured.dateDisplay)+'<span class="tag">'+blogEscapeHtml(featured.category)+'</span></div>' +
+          '<h2 style="margin-top:10px;"><a href="#blog/'+featured.slug+'" data-nav="blog-post">'+blogEscapeHtml(featured.title)+'</a></h2>' +
+          (featured.deck ? '<p class="muted" style="margin-top:8px;font-style:italic;">'+blogEscapeHtml(featured.deck)+'</p>' : '') +
+          '<p style="margin-top:12px;">'+blogEscapeHtml(featured.excerpt)+'</p>' +
+          '<a class="btn btn-outline" style="margin-top:16px;" href="#blog/'+featured.slug+'" data-nav="blog-post">Read the full post <span class="arw" aria-hidden="true">&rarr;</span></a>' +
+        '</div>';
+      blogRewireNav(featRoot);
+    } else {
+      featRoot.style.display = 'none';
+      featRoot.innerHTML = '';
+    }
+  }
+
+  var rest = featured ? filtered.filter(function(p){ return p.slug !== featured.slug; }) : filtered;
+  if(rest.length === 0){
+    listRoot.innerHTML = '<p class="muted" style="padding:34px 0;">No posts in this category yet. Check back soon, or explore another category above.</p>';
+  } else {
+    listRoot.innerHTML = rest.map(blogItemHtml).join('');
+    blogRewireNav(listRoot);
+  }
+}
+function renderBlogPost(slug){
+  var root = document.getElementById('blog-post-root');
+  if(!root) return;
+  var post = blogPostBySlug(slug);
+  if(!post){
+    if(history.replaceState){ history.replaceState(null,'','#blog'); }
+    if(typeof setActive === 'function'){ setActive('blog'); }
+    return;
+  }
+  var sectionsHtml = post.sections.map(function(sec){
+    var headingHtml = sec.heading ? '<h3 style="margin-top:28px;margin-bottom:12px;">'+blogEscapeHtml(sec.heading)+'</h3>' : '';
+    var paras = sec.paragraphs.map(function(p){ return '<p style="margin-top:16px;">'+blogEscapeHtml(p)+'</p>'; }).join('');
+    return headingHtml + paras;
+  }).join('');
+  var others = blogSortedPosts().filter(function(p){ return p.slug !== post.slug; }).slice(0,2);
+  var moreHtml = others.map(function(p){
+    return '<a class="card" style="display:block;" href="#blog/'+p.slug+'" data-nav="blog-post">' +
+      '<span class="status" style="font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--sage-deep);">'+blogEscapeHtml(p.category)+' &middot; '+blogEscapeHtml(p.dateDisplay)+'</span>' +
+      '<h3 style="font-size:17px;margin-top:10px;">'+blogEscapeHtml(p.title)+'</h3>' +
+    '</a>';
+  }).join('');
+
+  root.innerHTML = '' +
+    '<div class="wrap" style="max-width:760px;">' +
+      '<a class="link-arrow" href="#blog" data-nav="blog">&larr; Back to Blog</a>' +
+      '<div class="news-meta" style="margin-top:24px;">'+blogEscapeHtml(post.dateDisplay)+'<span class="tag">'+blogEscapeHtml(post.category)+'</span></div>' +
+      '<h1 style="margin-top:14px;font-size:38px;">'+blogEscapeHtml(post.title)+'</h1>' +
+      (post.deck ? '<p class="lead" style="margin-top:14px;">'+blogEscapeHtml(post.deck)+'</p>' : '') +
+      '<p class="small muted" style="margin-top:14px;">'+blogEscapeHtml(post.author)+' &middot; '+blogEscapeHtml(post.readingTime)+'</p>' +
+      '<div style="margin-top:28px;">'+blogPicture(post, 'news-photo', 1600, 900)+'</div>' +
+      '<p class="news-caption">'+blogEscapeHtml(post.imageCaption)+'</p>' +
+      '<div class="lead" style="font-size:18px;margin-top:8px;">'+sectionsHtml+'</div>' +
+    '</div>' +
+    (others.length ? '<div class="wrap" style="max-width:760px;margin-top:56px;border-top:1px solid var(--line);padding-top:36px;">' +
+      '<p class="eyebrow">More from the Blog</p>' +
+      '<div class="grid grid-2" style="margin-top:18px;">'+moreHtml+'</div>' +
+    '</div>' : '');
+  blogRewireNav(root);
+  window.scrollTo({top:0, behavior:'auto'});
+}
+renderBlogHomeTeaser();
+
 (function(){
   var pages = document.querySelectorAll('.page');
   var navLinks = document.querySelectorAll('.nav a[data-nav]');
@@ -1662,6 +1951,17 @@ body{font-size:17px;}
   var hamburger = document.getElementById('hamburger');
 
   function setActive(name){
+    // the old #news route now lives under Blog (Company News category)
+    if(name === 'news' || name.indexOf('news/') === 0){
+      name = 'blog';
+      if(history.replaceState){ history.replaceState(null,'','#blog'); }
+    }
+    // #blog/<slug> routes to the blog-post page template for that post
+    var slug = null;
+    if(name.indexOf('blog/') === 0){
+      slug = decodeURIComponent(name.slice(5));
+      name = 'blog-post';
+    }
     // allow a hash that points at a sub-anchor inside a page (e.g. "legal-medical")
     // by resolving it to that anchor's parent .page for routing purposes
     var pageName = name;
@@ -1686,14 +1986,18 @@ body{font-size:17px;}
       subAnchor = null;
       pages.forEach(function(p){ p.classList.toggle('is-active', p.getAttribute('data-page')==='home'); });
     }
+    var navActiveName = (pageName === 'blog-post') ? 'blog' : pageName;
     navLinks.forEach(function(a){
-      a.classList.toggle('active', a.getAttribute('data-nav') === pageName && !a.classList.contains('btn'));
+      a.classList.toggle('active', a.getAttribute('data-nav') === navActiveName && !a.classList.contains('btn'));
     });
     window.scrollTo({top:0, behavior:'auto'});
     if(subAnchor){
       requestAnimationFrame(function(){ subAnchor.scrollIntoView({behavior:'auto', block:'start'}); });
     }
+    if(pageName === 'blog' && typeof renderBlogIndex === 'function'){ renderBlogIndex(); }
+    if(pageName === 'blog-post' && typeof renderBlogPost === 'function'){ renderBlogPost(slug); }
   }
+  window.setActive = setActive; // exposed so dynamically-rendered Blog links can route
 
   document.querySelectorAll('[data-nav]').forEach(function(el){
     el.addEventListener('click', function(e){
