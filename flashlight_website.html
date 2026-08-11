@@ -1798,7 +1798,7 @@ function blogPicture(post, cls, w, h){
 }
 function blogItemHtml(post){
   return '' +
-    '<div class="news-item rvl">' +
+    '<div class="news-item">' +
       '<div class="news-meta">'+blogEscapeHtml(post.dateDisplay)+'<span class="tag">'+blogEscapeHtml(post.category)+'</span></div>' +
       '<div class="news-body">' +
         '<h3><a href="#blog/'+post.slug+'" data-nav="blog-post">'+blogEscapeHtml(post.title)+'</a></h3>' +
@@ -1827,7 +1827,7 @@ function renderBlogHomeTeaser(){
   var top3 = blogSortedPosts().slice(0,3);
   root.innerHTML = top3.map(function(post){
     return '' +
-      '<div class="news-item rvl" style="padding:26px 0;">' +
+      '<div class="news-item" style="padding:26px 0;">' +
         '<div class="news-meta">'+blogEscapeHtml(post.dateDisplay)+'<span class="tag">'+blogEscapeHtml(post.category)+'</span></div>' +
         '<div class="news-body">' +
           '<h3 style="font-size:19px;"><a href="#blog/'+post.slug+'" data-nav="blog-post">'+blogEscapeHtml(post.title)+'</a></h3>' +
