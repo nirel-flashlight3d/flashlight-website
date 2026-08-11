@@ -278,13 +278,6 @@
   .news-photo{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:var(--radius);border:1px solid var(--line);display:block;margin-top:22px;}
   .news-caption{font-size:12.5px;color:var(--muted);margin-top:10px;line-height:1.5;}
 
-  /* ---------- blog: category filter ---------- */
-  .blog-filter{display:flex;gap:2px;flex-wrap:wrap;margin-bottom:8px;}
-  .blog-filter-item{font-family:var(--mono);font-size:12.5px;color:var(--muted);padding:9px 13px;border-radius:6px;letter-spacing:.02em;transition:background .15s,color .15s;}
-  .blog-filter-item:hover{color:var(--forest);}
-  .blog-filter-item.active{color:var(--forest);background:var(--sage-tint);font-weight:600;}
-  #blog-featured{margin-bottom:8px;}
-  #blog-featured .news-photo{margin-top:0;}
 
   /* legal */
   .legal-index{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:40px;}
@@ -1541,8 +1534,6 @@ body{font-size:17px;}
 
   <div class="section first" style="border-top:none;padding-top:10px;">
     <div class="wrap" style="max-width:900px;">
-      <div class="blog-filter" id="blog-filter" role="tablist" aria-label="Filter posts by category"></div>
-      <div class="win" id="blog-featured" style="margin-top:22px;"></div>
       <div id="blog-list"></div>
     </div>
   </div>
@@ -1673,14 +1664,14 @@ var blogPosts = [
     author: 'Flashlight 3D',
     readingTime: '2 min read',
     deck: 'Development update — Chippy',
-    excerpt: "Chippy has been running our company for weeks. The interesting problem turned out to be deciding what it should actually be.",
+    excerpt: "Chippy has been part of our company for weeks. The interesting problem turned out to be deciding what it should actually be.",
     image: 'flashlight-assets/medical-records-working-session-candid',
     imageAlt: 'A teammate works at a laptop while the founder sketches a workflow on the whiteboard during a team working session in San Diego.',
     imageCaption: 'A working session in San Diego.',
     featured: true,
     sections: [
       { heading: '', paragraphs: [
-        "Chippy is live, and it has been running our company for weeks.",
+        "Chippy is live, and it has been part of our company for weeks.",
         "It sits on our meeting transcripts, our documents, and our decisions. It tracks what we're working on, what we've already figured out, and what's supposed to happen next. When someone needs to know why we filtered a variant class the way we did in July, or what we decided about a data-handling question three meetings ago, they ask Chippy instead of asking a person or scrolling through notes.",
         "For a company this size, that's already worth it. Institutional memory doesn't usually survive a startup's first year: decisions get made, contexts get lost, and six months later nobody can reconstruct the reasoning behind something everyone is now building on.",
         "The interesting problem right now isn't technical. It's that we're still working out what Chippy should be.",
@@ -1847,60 +1838,12 @@ function renderBlogHomeTeaser(){
   }).join('');
   blogRewireNav(root);
 }
-var blogCurrentCategory = 'All';
-function renderBlogFilter(){
-  var root = document.getElementById('blog-filter');
-  if(!root) return;
-  var cats = ['All'].concat(BLOG_CATEGORIES);
-  root.innerHTML = cats.map(function(cat){
-    var active = cat === blogCurrentCategory;
-    return '<a href="#" class="blog-filter-item'+(active?' active':'')+'" role="tab" aria-selected="'+active+'" data-cat="'+blogEscapeHtml(cat)+'">'+blogEscapeHtml(cat)+'</a>';
-  }).join('');
-  root.querySelectorAll('[data-cat]').forEach(function(a){
-    a.addEventListener('click', function(e){
-      e.preventDefault();
-      blogCurrentCategory = a.getAttribute('data-cat');
-      renderBlogIndex();
-    });
-  });
-}
 function renderBlogIndex(){
   var listRoot = document.getElementById('blog-list');
-  var featRoot = document.getElementById('blog-featured');
   if(!listRoot) return;
-  renderBlogFilter();
   var all = blogSortedPosts();
-  var filtered = blogCurrentCategory === 'All' ? all : all.filter(function(p){ return p.category === blogCurrentCategory; });
-
-  var featured = null;
-  if(featRoot){
-    featured = filtered.find(function(p){ return p.featured; }) || filtered[0] || null;
-    if(featured){
-      featRoot.style.display = '';
-      featRoot.innerHTML = '' +
-        '<div class="win-bar"><span class="win-dots" aria-hidden="true"><span></span><span></span><span></span></span><span class="win-title">Featured</span></div>' +
-        '<div class="win-body">' +
-          blogPicture(featured, 'news-photo', 1600, 900) +
-          '<div class="news-meta" style="margin-top:18px;">'+blogEscapeHtml(featured.dateDisplay)+'<span class="tag">'+blogEscapeHtml(featured.category)+'</span></div>' +
-          '<h2 style="margin-top:10px;"><a href="#blog/'+featured.slug+'" data-nav="blog-post">'+blogEscapeHtml(featured.title)+'</a></h2>' +
-          (featured.deck ? '<p class="muted" style="margin-top:8px;font-style:italic;">'+blogEscapeHtml(featured.deck)+'</p>' : '') +
-          '<p style="margin-top:12px;">'+blogEscapeHtml(featured.excerpt)+'</p>' +
-          '<a class="btn btn-outline" style="margin-top:16px;" href="#blog/'+featured.slug+'" data-nav="blog-post">Read the full post <span class="arw" aria-hidden="true">&rarr;</span></a>' +
-        '</div>';
-      blogRewireNav(featRoot);
-    } else {
-      featRoot.style.display = 'none';
-      featRoot.innerHTML = '';
-    }
-  }
-
-  var rest = featured ? filtered.filter(function(p){ return p.slug !== featured.slug; }) : filtered;
-  if(rest.length === 0){
-    listRoot.innerHTML = '<p class="muted" style="padding:34px 0;">No posts in this category yet. Check back soon, or explore another category above.</p>';
-  } else {
-    listRoot.innerHTML = rest.map(blogItemHtml).join('');
-    blogRewireNav(listRoot);
-  }
+  listRoot.innerHTML = all.map(blogItemHtml).join('');
+  blogRewireNav(listRoot);
 }
 function renderBlogPost(slug){
   var root = document.getElementById('blog-post-root');
