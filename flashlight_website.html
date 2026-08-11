@@ -1743,6 +1743,7 @@ var blogPosts = [
     deck: '',
     excerpt: 'Flashlight 3D is developing an AI-assisted system intended to consolidate medical records, wearable signals, laboratory reports, and genomic information into a user-controlled longitudinal record.',
     image: 'flashlight-assets/genome-pipeline-whiteboard',
+    noWebp: true,
     imageAlt: 'A whiteboard sketch of the genomic variant-annotation pipeline, from VCF and SNP files through ClinGen, ClinVar, and Orphanet, drawn during a team working session.',
     imageCaption: 'Working through the variant-annotation pipeline on the whiteboard, San Diego.',
     featured: false,
@@ -1791,9 +1792,11 @@ function blogPostBySlug(slug){
   return null;
 }
 function blogPicture(post, cls, w, h){
+  var img = '<img class="'+cls+'" src="'+post.image+'.jpg" alt="'+blogEscapeHtml(post.imageAlt)+'" width="'+w+'" height="'+h+'" loading="lazy" decoding="async">';
+  if(post.noWebp) return img; // this file's .webp has a decode issue on at least one real-world browser; jpg only
   return '<picture>' +
     '<source srcset="'+post.image+'.webp" type="image/webp">' +
-    '<img class="'+cls+'" src="'+post.image+'.jpg" alt="'+blogEscapeHtml(post.imageAlt)+'" width="'+w+'" height="'+h+'" loading="lazy" decoding="async">' +
+    img +
     '</picture>';
 }
 function blogItemHtml(post){
