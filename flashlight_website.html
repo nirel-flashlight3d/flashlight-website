@@ -22,6 +22,7 @@
     --muted:#5c6353;
     --line:#d7dccb;
     --line-2:#c7cdb8;
+    --shadow-tint:#c3ccb3;
     --footer-bg:#14231a;
     --footer-text:#d8ddcc;
     --footer-link:#9db684;
@@ -87,8 +88,9 @@
   .nav a.active::after{content:"";display:block;height:2px;background:var(--sage);border-radius:2px;margin-top:5px;}
   .nav-cta{margin-left:10px;}
 
-  .btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-size:14px;font-weight:600;padding:11px 20px;border-radius:var(--radius-sm);cursor:pointer;border:1px solid transparent;transition:background .16s,border-color .16s,color .16s,transform .05s;white-space:nowrap;}
-  .btn:active{transform:translateY(1px);}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-size:14px;font-weight:600;padding:11px 20px;border-radius:var(--radius-sm);cursor:pointer;border:1.5px solid var(--forest);box-shadow:2px 2px 0 var(--shadow-tint);transition:background .16s,border-color .16s,color .16s,transform .15s ease,box-shadow .15s ease;white-space:nowrap;}
+  .btn:hover{transform:scale(1.05);box-shadow:3px 3px 0 var(--shadow-tint);}
+  .btn:active{transform:scale(1.02) translateY(1px);box-shadow:1px 1px 0 var(--shadow-tint);}
   .btn-primary{background:var(--forest);color:var(--canvas);}
   .btn-primary:hover{background:var(--forest-2);}
   .btn-outline{background:transparent;color:var(--forest);border-color:var(--line-2);}
@@ -188,6 +190,19 @@
   .product .status .d{width:7px;height:7px;border-radius:50%;background:var(--sage);}
   .product h3{font-size:23px;}
   .product p{font-size:15px;color:var(--text);flex:1;}
+
+  /* ---------- window-chrome block (formal, no filenames) ---------- */
+  .win{background:var(--paper);border:1.5px solid var(--forest);border-radius:var(--radius);box-shadow:3px 3px 0 var(--shadow-tint);overflow:hidden;}
+  .win-bar{display:flex;align-items:center;gap:10px;padding:12px 18px;background:var(--sage-tint);border-bottom:1px solid var(--line);}
+  .win-dots{display:flex;gap:6px;flex-shrink:0;}
+  .win-dots span{width:8px;height:8px;border-radius:50%;border:1px solid var(--forest);display:block;}
+  .win-dots span:nth-child(1){background:var(--sage);}
+  .win-dots span:nth-child(2){background:var(--moss);}
+  .win-dots span:nth-child(3){background:var(--forest);}
+  .win-title{font-family:var(--mono);font-size:11px;letter-spacing:.03em;color:var(--muted);}
+  .win-body{padding:26px;}
+  .win.product{display:block;padding:0;}
+  .win.product .win-body{display:flex;flex-direction:column;gap:16px;}
 
   /* ---------- callout / disclaimer ---------- */
   .callout{background:var(--sage-tint);border:1px solid var(--line-2);border-left:3px solid var(--sage);border-radius:var(--radius);padding:24px 26px;}
@@ -798,17 +813,22 @@ body{font-size:17px;}
   <!-- The flashlight idea -->
   <div class="section" id="thesis">
     <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow">The flashlight idea</p>
-        <h2>A flashlight makes buried information visible</h2>
-        <p>Millions of rows, pages, and raw sequencing lines sit in the dark, scattered across portals, PDFs, and files no one has time to read end to end. Flashlight's systems curate the relevant sources first, then let AI explain what they mean, rather than asking AI to recall an answer from memory.</p>
-      </div>
-      <div class="chips">
-        <span class="chip">Unstructured pile</span>
-        <span class="chip" aria-hidden="true">&rarr;</span>
-        <span class="chip">Curated database</span>
-        <span class="chip" aria-hidden="true">&rarr;</span>
-        <span class="chip">Grounded, cited answer</span>
+      <div class="win">
+        <div class="win-bar"><span class="win-dots" aria-hidden="true"><span></span><span></span><span></span></span><span class="win-title">How it works</span></div>
+        <div class="win-body">
+          <div class="section-head" style="margin-bottom:28px;">
+            <p class="eyebrow">The flashlight idea</p>
+            <h2>A flashlight makes buried information visible</h2>
+            <p>Millions of rows, pages, and raw sequencing lines sit in the dark, scattered across portals, PDFs, and files no one has time to read end to end. Flashlight's systems curate the relevant sources first, then let AI explain what they mean, rather than asking AI to recall an answer from memory.</p>
+          </div>
+          <div class="chips" style="margin-top:0;">
+            <span class="chip">Unstructured pile</span>
+            <span class="chip" aria-hidden="true">&rarr;</span>
+            <span class="chip">Curated database</span>
+            <span class="chip" aria-hidden="true">&rarr;</span>
+            <span class="chip">Grounded, cited answer</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -885,38 +905,47 @@ body{font-size:17px;}
         <p>Medical Records, the Genomic Sequencing Pipeline, and Chippy all move the same way: an unstructured pile is curated into a database, and AI explains what's there instead of guessing.</p>
       </div>
       <div class="grid grid-3">
-        <div class="card product" style="border-color:var(--sage-deep);">
-          <span class="status"><span class="d" aria-hidden="true"></span>In development · test phase</span>
-          <h3>Genomic Sequencing Pipeline</h3>
-          <p>A whole-genome VCF holds about five million variants. The pipeline curates the ones with available evidence and produces a report that explains their significance in relation to specific genes.</p>
-          <div class="chips" style="margin-top:0;">
-            <span class="chip">Input · VCF</span>
-            <span class="chip">Curation · ClinVar / OMIM / ACMG</span>
-            <span class="chip">Output · Variant report</span>
+        <div class="win card product" style="border-color:var(--sage-deep);">
+          <div class="win-bar"><span class="win-dots" aria-hidden="true"><span></span><span></span><span></span></span><span class="win-title">Genomic Sequencing Pipeline</span></div>
+          <div class="win-body">
+            <span class="status"><span class="d" aria-hidden="true"></span>In development · test phase</span>
+            <h3>Genomic Sequencing Pipeline</h3>
+            <p>A whole-genome VCF holds about five million variants. The pipeline curates the ones with available evidence and produces a report that explains their significance in relation to specific genes.</p>
+            <div class="chips" style="margin-top:0;">
+              <span class="chip">Input · VCF</span>
+              <span class="chip">Curation · ClinVar / OMIM / ACMG</span>
+              <span class="chip">Output · Variant report</span>
+            </div>
+            <a class="link-arrow" href="#seq" data-nav="seq">See the flagship report <span class="arw" aria-hidden="true">→</span></a>
           </div>
-          <a class="link-arrow" href="#seq" data-nav="seq">See the flagship report <span class="arw" aria-hidden="true">→</span></a>
         </div>
-        <div class="card product">
-          <span class="status"><span class="d" aria-hidden="true"></span>In development</span>
-          <h3>Medical Records</h3>
-          <p>Fragmented PDFs, portal exports, labs, and visit summaries become one longitudinal, source-grounded record you can query and share with your care team.</p>
-          <div class="chips" style="margin-top:0;">
-            <span class="chip">Input · Authorized records</span>
-            <span class="chip">Curation · Extract, QC, consolidate</span>
-            <span class="chip">Output · Longitudinal record</span>
+        <div class="win card product">
+          <div class="win-bar"><span class="win-dots" aria-hidden="true"><span></span><span></span><span></span></span><span class="win-title">Medical Records</span></div>
+          <div class="win-body">
+            <span class="status"><span class="d" aria-hidden="true"></span>In development</span>
+            <h3>Medical Records</h3>
+            <p>Fragmented PDFs, portal exports, labs, and visit summaries become one longitudinal, source-grounded record you can query and share with your care team.</p>
+            <div class="chips" style="margin-top:0;">
+              <span class="chip">Input · Authorized records</span>
+              <span class="chip">Curation · Extract, QC, consolidate</span>
+              <span class="chip">Output · Longitudinal record</span>
+            </div>
+            <a class="link-arrow" href="#records" data-nav="records">See how it works <span class="arw" aria-hidden="true">→</span></a>
           </div>
-          <a class="link-arrow" href="#records" data-nav="records">See how it works <span class="arw" aria-hidden="true">→</span></a>
         </div>
-        <div class="card product">
-          <span class="status"><span class="d" aria-hidden="true"></span>In development · private testing</span>
-          <h3>Chippy</h3>
-          <p>Built first for Flashlight's own team: an internal agent that answers questions from our working documents, proving out the same architecture at a smaller scale.</p>
-          <div class="chips" style="margin-top:0;">
-            <span class="chip">Input · Internal docs</span>
-            <span class="chip">Curation · Curated corpus</span>
-            <span class="chip">Output · Cited answers</span>
+        <div class="win card product">
+          <div class="win-bar"><span class="win-dots" aria-hidden="true"><span></span><span></span><span></span></span><span class="win-title">Chippy</span></div>
+          <div class="win-body">
+            <span class="status"><span class="d" aria-hidden="true"></span>In development · private testing</span>
+            <h3>Chippy</h3>
+            <p>Built first for Flashlight's own team: an internal agent that answers questions from our working documents, proving out the same architecture at a smaller scale.</p>
+            <div class="chips" style="margin-top:0;">
+              <span class="chip">Input · Internal docs</span>
+              <span class="chip">Curation · Curated corpus</span>
+              <span class="chip">Output · Cited answers</span>
+            </div>
+            <a class="link-arrow" href="#chippy" data-nav="chippy">Why we built it <span class="arw" aria-hidden="true">→</span></a>
           </div>
-          <a class="link-arrow" href="#chippy" data-nav="chippy">Why we built it <span class="arw" aria-hidden="true">→</span></a>
         </div>
       </div>
     </div>
