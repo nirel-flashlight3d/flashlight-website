@@ -1658,40 +1658,39 @@ var blogPosts = [
     slug: 'chippy-remembers-everything',
     title: "We built an AI that remembers everything. Now we're deciding what to ask it.",
     category: 'Building Flashlight',
-    dateDisplay: 'August 1, 2026',
-    dateISO: '2026-08-01',
+    dateDisplay: 'August 7, 2026',
+    dateISO: '2026-08-07',
     sortOrder: 1,
     author: 'Flashlight 3D',
     readingTime: '2 min read',
-    deck: 'Development update — Chippy',
-    excerpt: "Chippy has been part of our company for weeks. The interesting problem turned out to be deciding what it should actually be.",
+    deck: 'Development update: Chippy',
+    excerpt: "Chippy, Flashlight 3D's own AI agent, has been part of our company for weeks. The interesting problem turned out to be deciding what it should actually be.",
     image: 'flashlight-assets/medical-records-working-session-candid',
     imageAlt: 'A teammate works at a laptop while the founder sketches a workflow on the whiteboard during a team working session in San Diego.',
-    imageCaption: 'A working session in San Diego.',
+    imageCaption: 'A working session at our office in San Diego.',
     featured: true,
     sections: [
       { heading: '', paragraphs: [
-        "Chippy is live, and it has been part of our company for weeks.",
-        "It sits on our meeting transcripts, our documents, and our decisions. It tracks what we're working on, what we've already figured out, and what's supposed to happen next. When someone needs to know why we filtered a variant class the way we did in July, or what we decided about a data-handling question three meetings ago, they ask Chippy instead of asking a person or scrolling through notes.",
+        "Chippy is live internally at our company, and it has been part of our company for weeks.",
+        "It sits on our meeting transcripts, our documents, and our decisions. It tracks what we're working on, what we've already figured out, and what's supposed to happen next. When someone needs to know why we filtered a variant class the way we did in July, or what we decided about a data-handling question three meetings ago, they ask Chippy instead of scrolling through hundreds of notes.",
         "For a company this size, that's already worth it. Institutional memory doesn't usually survive a startup's first year: decisions get made, contexts get lost, and six months later nobody can reconstruct the reasoning behind something everyone is now building on.",
-        "The interesting problem right now isn't technical. It's that we're still working out what Chippy should be.",
-        "Right now it's a company brain. It could be a research assistant, an onboarding system, a project manager that actually knows the project. Each of those is a different product, and we'd rather find out which one is genuinely useful by living with it than by guessing on a whiteboard. Intern Angel Mencia has been working diligently to develop the AI agent at a technical level. He is joined by intern Nirel Indurkar, leading the AI Alignment process to ensure that all of Chippy's policies and instructions are valid and data is protected.",
-        "There's also a longer thread here. Chippy is a system that takes a large pile of unstructured information about an entity and makes it answerable, with sources attached. That's the same problem as a person's medical records. It's the same problem as a genome.",
-        "We're practicing on ourselves first."
+        "The focus of our energy is not technical anymore. It is on ensuring that Chippy is offering assistance that is uniquely valuable.",
+        "Right now, it's a company brain. It could be a research assistant, an onboarding system, a project manager that actually knows the project. Each of those is a different aspect of the product, and we'd rather find out which one is useful by living with it than by guessing on a whiteboard. Intern Angel Mencia has been working diligently to develop the AI agent at a technical level. He is joined by intern Nirel Indurkar, leading the AI Alignment process to ensure that all of Chippy's policies and instructions are valid and data is protected. Angel performs the complex work of thoughtfully implementing these policies into the Chippy system.",
+        "There's also a longer thread here: Chippy is a system that takes a large pile of unstructured information about an entity and makes it answerable, with sources attached. That's the same problem as a person's medical records. It's the same problem as a genome. We're working on solving it."
       ]}
     ]
   },
   {
     slug: 'what-breaks-reading-a-medical-record',
-    title: 'What breaks when you try to read a medical record',
+    title: 'Everyone has a piece of your medical record. Nobody has all of it.',
     category: 'Building Flashlight',
-    dateDisplay: 'August 7, 2026',
-    dateISO: '2026-08-07',
+    dateDisplay: 'August 1, 2026',
+    dateISO: '2026-08-01',
     sortOrder: 2,
     author: 'Flashlight 3D',
-    readingTime: '1 min read',
-    deck: 'Development update — Medical Records Pipeline',
-    excerpt: "The medical records pipeline is close to prototype. The hard part isn't any single format — it's all of them at once, reliably.",
+    readingTime: '2 min read',
+    deck: 'Development update: Medical Records Pipeline',
+    excerpt: "The medical records pipeline is close to prototype.",
     image: 'flashlight-assets/medical-records-working-session-wide',
     imageAlt: 'The founder sketching the medical-records extraction pipeline on a whiteboard during a hybrid working session, with laptops and remote teammates visible on a meeting-room screen.',
     imageCaption: 'Sketching the medical-records extraction pipeline, San Diego.',
@@ -1699,9 +1698,9 @@ var blogPosts = [
     sections: [
       { heading: '', paragraphs: [
         "The medical records pipeline is close to prototype.",
-        "Medical records were never designed to be read by anything other than a human being with the time to read them. A single person's history might live across four institutions in four formats: scanned PDFs where the text is really an image, faxes of faxes, portal exports with column headers that mean one thing at one hospital and something else at another. Dates in three formats. Units that shift between systems. The same medication under a brand name in one document and a generic in the next.",
-        "Any one of those is solvable. All of them at once, reliably, without quietly dropping something that mattered, is the actual engineering problem.",
-        "Andrew Pham and Sathvik Guntha have been working through it by patching parsing errors, tracking down where data gets mangled in the handoff between stages, and testing against the messiest inputs we can find rather than the cleanest."
+        "A person's medical history is rarely in one place. It accumulates across primary care offices, specialists, hospitals, imaging centers, and labs, each maintaining its own record in its own system, none of which reliably talks to the others. The result is that the patient is the only one with a complete picture, and they hold it in memory rather than in a file. When something serious happens, that arrangement fails. Clinicians make decisions from partial charts. The same questions get answered on a clipboard at every visit. Imaging travels between institutions on a disc in someone's car. Errors introduced in one system propagate into others and can change what treatment a person qualifies for. Families end up doing the integration work themselves, calling records departments and re-explaining a history to each new specialist, and how well they do it depends largely on whether someone among them has the time and the technical background to manage it. A medical records pipeline is the attempt to make that work automatic: ingesting records from every source a person has, reconciling them into a single coherent history, and making that history answerable in plain language. The goal is not to replace clinical judgment but to ensure that the person receiving care, and everyone treating them, is working from the same complete picture.",
+        "Our intern Sathvik Guntha leads this project, joined by intern Andrew Pham. They have been methodologically tracking how data travels from input to the final product. Medical records were never designed to be read by anything other than a human being with the time to read them. A single person's history might live across four institutions in several formats, from scanned PDFs where the text is really an image, faxes of faxes, portal exports with column headers that mean one thing at one hospital and something else at another. Dates in three formats. Units that shift between systems. The same medication under a brand name in one document and a generic in the next.",
+        "Our team is ensuring that all results are verifiably accurate during this stage of product development."
       ]}
     ]
   },
@@ -1709,25 +1708,23 @@ var blogPosts = [
     slug: 'building-the-pipeline-was-the-easy-part',
     title: 'Building the pipeline was the easy part',
     category: 'Building Flashlight',
-    dateDisplay: 'August 2026',
-    dateISO: '2026-08',
+    dateDisplay: 'July 25, 2026',
+    dateISO: '2026-07-25',
     sortOrder: 3,
     author: 'Flashlight 3D',
     readingTime: '2 min read',
-    deck: 'Development update — Whole Genome Sequence Report',
-    excerpt: "The genomic variant pipeline is built and producing reports. Proving it's right is the part that takes longer — and should.",
+    deck: 'Development update: Whole Genome Sequence Report',
+    excerpt: "The genomic variant pipeline is built and producing reports. Proving it's right is the part that takes longer.",
     image: 'flashlight-assets/flashlight-team-cohort',
     imageAlt: 'The Flashlight 3D founder and six-person summer intern cohort seated together around a conference table in San Diego.',
     imageCaption: 'Peter Wang, Max Arola, and Dru Johnson are leading validation this month.',
     featured: false,
     sections: [
       { heading: '', paragraphs: [
-        "The pipeline is built. A whole genome sequence goes in, and a variant report comes out the other side — filtered, annotated, cross-referenced against ClinVar, ClinGen, OMIM, Orphanet, and the ACMG actionable gene list.",
-        "That took a few weeks. Proving it's right will take longer, and it should.",
-        "A whole genome carries millions of variants. Almost all of them are noise, and the entire value of a report like this is the small number that aren't. Which means the failure mode isn't a report that doesn't generate — it's a report that generates smoothly and confidently tells someone the wrong thing. A tool nobody trusts is useless. A tool people trust that shouldn't be trusted is worse.",
-        "So this month, Peter Wang, Max Arola, and Dru Johnson are in validation. They're running known samples through the pipeline and checking the output against expected results, variant by variant. Where a classification is uncertain, they trace it back to the source. Where the filtering logic drops something it shouldn't, they find out why.",
-        "It's slow, unglamorous work, and it's the difference between a demo and a product.",
-        "We'll release it when we believe it, not before."
+        "The pipeline is built. A whole genome sequence goes in, and a variant report comes out the other side, filtered, annotated, cross-referenced against ClinVar, ClinGen, OMIM, Orphanet, and the ACMG actionable gene list. Sathvik Guntha led the initial sprint and developed the pipeline integrating these various trusted databases.",
+        "Assisted by Peter Wang, Nirel Indurkar, and Max Arola, this phase took a few weeks. Proving it's right will take longer, and it should.",
+        "A whole genome carries millions of variants. Almost all of them are noise, and the entire value of a report like this is the small number that aren't. Which means the failure mode isn't a report that doesn't generate: it's a report that generates smoothly and confidently tells someone the wrong thing. A tool nobody trusts is useless. A tool people trust that shouldn't be trusted is worse.",
+        "So this month, Peter Wang and Dru Johnson are in validation. They're running known samples through the pipeline and checking the output against expected results, variant by variant. Where a classification is uncertain, they trace it back to the source. Where the filtering logic drops something it shouldn't, they find out why."
       ]}
     ]
   },
@@ -1735,12 +1732,12 @@ var blogPosts = [
     slug: 'unified-personal-health-information-platform',
     title: 'Flashlight 3D develops unified personal health-information platform',
     category: 'Company News',
-    dateDisplay: 'July 2026',
-    dateISO: '2026-07',
+    dateDisplay: 'July 20, 2026',
+    dateISO: '2026-07-20',
     sortOrder: 4,
     author: 'Flashlight 3D',
     readingTime: '1 min read',
-    deck: '',
+    deck: 'This pre-seed startup is beginning development, based in downtown San Diego.',
     excerpt: 'Flashlight 3D is developing an AI-assisted system intended to consolidate medical records, wearable signals, laboratory reports, and genomic information into a user-controlled longitudinal record.',
     image: 'flashlight-assets/genome-pipeline-whiteboard',
     noWebp: true,
@@ -1750,7 +1747,7 @@ var blogPosts = [
     sections: [
       { heading: '', paragraphs: [
         "Flashlight 3D is developing an AI-assisted system intended to consolidate medical records, wearable signals, laboratory reports, and genomic information into a user-controlled longitudinal record.",
-        "The platform is currently in development. Planned capabilities remain subject to research, testing, privacy review, and validation."
+        "“I started Flashlight 3D to pull together my passions and experience: data science, mentoring young developers, education and workforce development, health and life science, saving lives.” —Jonathan Price (Founder & CEO)"
       ]}
     ]
   },
@@ -1763,15 +1760,15 @@ var blogPosts = [
     sortOrder: 5,
     author: 'Flashlight 3D',
     readingTime: '1 min read',
-    deck: '',
-    excerpt: 'Flashlight 3D has launched its Summer 2026 internship cohort with six interns working alongside the company to prototype the Genomic Sequencing Pipeline, currently in development.',
+    deck: 'Meet the Team',
+    excerpt: 'Flashlight 3D has launched its Summer 2026 internship cohort with six interns working alongside the company to prototype the Genomic Sequencing Pipeline, currently in development. They will build a Medical Records Consolidation system and develop a company AI agent.',
     image: 'flashlight-assets/flashlight-team-cohort-alt',
     imageAlt: 'The Flashlight 3D founder and the Summer 2026 intern cohort gathered together in San Diego.',
-    imageCaption: 'The Summer 2026 cohort, on site in San Diego.',
+    imageCaption: 'The Summer 2026 cohort, on site in downtown San Diego.',
     featured: false,
     sections: [
       { heading: '', paragraphs: [
-        "Flashlight 3D has launched its Summer 2026 internship cohort with six interns working alongside the company to prototype the Genomic Sequencing Pipeline, an AI-assisted genomic information tool currently in development.",
+        "Flashlight 3D has launched its Summer 2026 internship cohort with six interns working alongside the company to prototype the Genomic Sequencing Pipeline, an AI-assisted genomic information tool currently in development. Pictured from left to right: (bottom row) Peter Wang, Nirel Indurkar, Dru Johnson; (top row) Sathvik Guntha, Max Arola, Angel Mencia, Jonathan Price.",
         "Beginning July 20, the cohort will contribute across genomic data processing, sequence annotation, artificial intelligence, application development, user experience, and responsible product design.",
         "The internship program gives participants hands-on experience developing early-stage medical-informatics technology while contributing to product evaluation, documentation, privacy, safety, and communication."
       ]}
